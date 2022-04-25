@@ -9,6 +9,7 @@ dotenv.config();
 //routes :
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
+const postRoute = require("./routes/posts")
 
 mongoose.connect(process.env.MONGO_URL, ()=>{
     console.log("connected to mongoDb");
@@ -23,7 +24,7 @@ app.use(morgan("common"))
 //custom routes middlewares
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
-
+app.use("/api/posts", postRoute);
 
 const PORT = 5000 || process.env.PORT
 app.listen(PORT, ()=>{
