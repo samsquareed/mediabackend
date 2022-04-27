@@ -5,6 +5,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const app = express()
 dotenv.config();
+const cors = require('cors')
 
 //routes :
 const userRoute = require("./routes/users")
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGO_URL, ()=>{
 app.use(express.json())
 app.use(helmet())
 app.use(morgan("common"))
+app.use(cors())
 
 //custom routes middlewares
 app.use("/api/users", userRoute);
